@@ -2,6 +2,7 @@
 import requests
 import plotly.express as px
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 
 # GUardamos la consulta en un variable
 url = "https://earthquake.usgs.gov/earthquakes"
@@ -67,5 +68,6 @@ fig = px.scatter_geo(
     )
 fig.update_layout(title_font_size=28)
 st.set_page_config(layout="wide")
+st_autorefresh(interval=60000, key="earthquake_refresh")
 # Mostrar gráfico
 st.plotly_chart(fig, use_container_width=True)
