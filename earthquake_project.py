@@ -13,7 +13,7 @@ headers = {"Acept": "https://earthquake.usgs.gov/earthquakes/feed/v1.0"}
 # Le pasamos la url de la consulta de la API y la version de la misma
 r = requests.get(url, headers=headers)
 
-# Imprimimos status code esperando 200 para saber 
+# Imprimimos status code esperando 200 para saber
 # si la solicitud se realizo correctamente
 print(f"Status Code: {r.status_code}")
 
