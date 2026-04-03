@@ -65,8 +65,7 @@ fig = px.scatter_geo(
     projection='natural earth',
     color_continuous_scale='viridis',
     )
-
 fig.update_layout(title_font_size=28)
-
+st.set_page_config(layout="wide")
 # Mostrar gráfico
 st.plotly_chart(fig, use_container_width=True)
