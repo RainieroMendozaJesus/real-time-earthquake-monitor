@@ -1,9 +1,9 @@
-# Rainiero Mendoza de Jesus - 3/4/2026 
+# Rainiero Mendoza de Jesus - 3/4/2026
 # Importamos librerias necesarias
 import requests
 import plotly.express as px
-# import streamlit as st
-# from streamlit_autorefresh import st_autorefresh
+import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 
 # GUardamos la consulta en un variable
 url = "https://earthquake.usgs.gov/earthquakes"
@@ -22,23 +22,9 @@ print(f"Status Code: {r.status_code}")
 # Transformamos la informacion de objetos a diccionarios
 data = r.json()
 
-# Mostrar las llaves principales de nuestro diccionario
-print(len(data))
-
-# Verificar cuales son esas llaves
-print(data.keys())
-
 # Sacamos cada uno de los terremostos que estan en el diccionario para
 # trabajar con la informacion
 features = data['features']
-
-# Verificamos la cantidad de terremostos que hay en la
-# lista que trae los diccionarios de los terremostos"""
-print(len(features))
-
-# Sacamos el primer dato para examinar que datos queremos
-feature = features[0]
-print(feature)
 
 # Creamos listas de los datos que queremos graficar
 mags, lats, lons, titles = [], [], [], []
@@ -68,12 +54,16 @@ fig = px.scatter_geo(
     projection='natural earth',
     color_continuous_scale='viridis',
     )
-
 fig.update_layout(title_font_size=28)
-# st.set_page_config(layout="wide")
-# st_autorefresh(interval=60000, key="earthquake_refresh")
+st.set_page_config(layout="wide")
+st_autorefresh(interval=60000, key="earthquake_refresh")
+
+# Perzonalizacion
+fig.update_layout(title_font_size=28)
+
+st.set_page_config(layout="wide")
+
+st_autorefresh(interval=60000, key="earthquake_refresh")
 
 # Mostrar gráfico
-# st.plotly_chart(fig, use_container_width=True)
-
-fig.show()
+st.plotly_chart(fig, use_container_width=True)
