@@ -137,7 +137,7 @@ Potential enhancements for future versions of this project include:
 
 A live version of the project can be viewed here:
 
-[(Link to the project)](https://real-time-earthquake-monitor-kfqonjjspygk86xsnsuugu.streamlit.app/)
+https://real-time-earthquake-monitor-hccttzzhibnsybz2rp5wwg.streamlit.app/
 
 ---
 
