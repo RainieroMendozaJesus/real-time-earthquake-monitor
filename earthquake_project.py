@@ -27,7 +27,7 @@ data = r.json()
 features = data['features']
 
 # Creamos listas de los datos que queremos graficar
-mags, lats, lons, titles = [], [], [], []
+mags, lats, lons, hover_text = [], [], [], []
 
 # Recoremos los datos y los guardamos en listas
 for i in features:
@@ -39,7 +39,10 @@ for i in features:
         mags.append(float(i['properties']['mag']))
         lons.append(float(i['geometry']['coordinates'][0]))
         lats.append(float(i['geometry']['coordinates'][1]))
-        titles.append(i['properties']['title'])
+        place = i['properties']['place']
+        title = i['properties']['title']
+        hover = f"Place: {place}<br>Title: {title}"
+        hover_text.append(hover)
 
 # Creamos el titulo del projecto o sea de la grafica Titulo principal
 project_title = "Real Time Earthquake Monitor - Earthquakes in the last hour"
@@ -53,6 +56,7 @@ fig = px.scatter_geo(
     color=mags,
     projection='natural earth',
     color_continuous_scale='viridis',
+    hover_name=hover_text,
     )
 # Perzonalizacion
 fig.update_layout(title_font_size=28)
